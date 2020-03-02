@@ -19,6 +19,9 @@ class Manager:
                         43: "叶子皓", 44: "游睿臻", 45: "袁征航", 46: "张可欣", 47: "张怡静", 48: "张宇杰", 49: "章华", 50: "章敬轩",
                         51: "章一龙", 52: "郑锋", 53: "郑瑞希", 54: "卓宏海", 55: "邹秀琴"}
         self.tk = tk.Tk()
+        self.inited_names = tk.Text(self.tk, height=15, width=40)
+        self.inited_names.place(x=300, y=380)
+        tk.Label(self.tk, text="已签到").place(x=300, y=355)
         self.tk.geometry("600x600")
         tk.Label(self.tk, text="已签到号数").place(x=0, y=50)
         self.inited_user = tk.Text(self.tk, width=40, height=15)
@@ -55,6 +58,12 @@ class Manager:
         un_init = str(un_init)
         self.un_init_user.delete(1.0, "end")
         self.un_init_user.insert("insert", un_init)
+        self.inited_names.delete(1.0, "end")
+        init_names = []
+        for x in inited_user:
+            init_names.append(self.db_data[x])
+        init_names = repr(init_names)
+        self.inited_names.insert("insert", init_names)
 
 
 def main():
